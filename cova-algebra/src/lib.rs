@@ -39,6 +39,13 @@
 //! ```
 
 #![warn(missing_docs)]
+#![allow(
+  clippy::doc_markdown,
+  clippy::wildcard_imports,
+  clippy::must_use_candidate,
+  clippy::return_self_not_must_use,
+  clippy::missing_panics_doc
+)]
 #![allow(incomplete_features)]
 #![feature(generic_const_exprs)]
 

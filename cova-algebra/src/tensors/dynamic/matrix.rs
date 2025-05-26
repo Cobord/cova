@@ -1340,6 +1340,7 @@ impl<F: Field + Copy + fmt::Display> fmt::Display for DynamicDenseMatrix<F, Colu
 #[cfg(test)]
 mod tests {
   #![allow(non_snake_case)]
+  #![allow(clippy::float_cmp)]
   use super::*;
   use crate::{algebras::boolean::Boolean, fixtures::Mod7};
 
@@ -1484,6 +1485,7 @@ mod tests {
   }
 
   // Test get_component, set_component for RowMajor and ColumnMajor
+  #[allow(clippy::similar_names)]
   #[test]
   fn test_get_set_component() {
     let mut m_rm: DynamicDenseMatrix<Mod7, RowMajor> = DynamicDenseMatrix::new();
@@ -1502,6 +1504,7 @@ mod tests {
   }
 
   // Test transpose
+  #[allow(clippy::similar_names)]
   #[test]
   fn test_transpose() {
     let mut m_rm: DynamicDenseMatrix<Mod7, RowMajor> = DynamicDenseMatrix::new();
@@ -1534,7 +1537,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "New row length must match existing number of columns")]
   fn test_append_row_mismatch_cols_row_major() {
     let mut m: DynamicDenseMatrix<f64, RowMajor> = DynamicDenseMatrix::new();
     m.append_row(DynamicVector::new(vec![1.0, 2.0]));
@@ -1542,7 +1545,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "Column length must match the number of rows")]
   fn test_append_column_mismatch_rows_row_major() {
     let mut m: DynamicDenseMatrix<f64, RowMajor> = DynamicDenseMatrix::new();
     m.append_column(&DynamicVector::new(vec![1.0, 2.0]));
@@ -1550,7 +1553,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "New row length must match existing number of columns")]
   fn test_set_row_mismatch_cols_row_major() {
     let mut m: DynamicDenseMatrix<f64, RowMajor> = DynamicDenseMatrix::new();
     m.append_row(DynamicVector::new(vec![1.0, 2.0]));
@@ -1558,7 +1561,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "New column length must match the number of rows")]
   fn test_set_column_mismatch_rows_row_major() {
     let mut m: DynamicDenseMatrix<f64, RowMajor> = DynamicDenseMatrix::new();
     m.append_column(&DynamicVector::new(vec![1.0]));
@@ -1566,7 +1569,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "New column length must match existing number of rows")]
   fn test_append_column_mismatch_rows_col_major() {
     let mut m: DynamicDenseMatrix<f64, ColumnMajor> = DynamicDenseMatrix::new();
     m.append_column(DynamicVector::new(vec![1.0, 2.0]));
@@ -1574,7 +1577,7 @@ mod tests {
   }
 
   #[test]
-  #[should_panic]
+  #[should_panic(expected = "Row length must match the number of columns")]
   fn test_append_row_mismatch_cols_col_major() {
     let mut m: DynamicDenseMatrix<f64, ColumnMajor> = DynamicDenseMatrix::new();
     m.append_row(&DynamicVector::new(vec![1.0, 2.0]));

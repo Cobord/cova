@@ -1,5 +1,11 @@
 #![doc = include_str!("../README.md")]
 #![warn(missing_docs)]
+#![allow(
+  clippy::must_use_candidate,
+  clippy::return_self_not_must_use,
+  clippy::doc_markdown,
+  clippy::wildcard_imports
+)]
 
 pub mod cloud;
 pub mod complexes;

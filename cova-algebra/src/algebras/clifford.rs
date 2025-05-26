@@ -785,6 +785,7 @@ fn blade_indices_to_bit<const N: usize>(indices: &[usize]) -> usize {
 
 #[cfg(test)]
 mod tests {
+  #![allow(clippy::similar_names)]
   use super::*;
 
   fn clifford_algebra_non_euclidean() -> CliffordAlgebra<f64, 3> {

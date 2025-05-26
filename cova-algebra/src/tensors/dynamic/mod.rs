@@ -248,6 +248,7 @@ mod tests {
     );
   }
 
+  #[allow(clippy::similar_names)]
   #[test]
   fn test_quotient_empty_space_vectors() {
     let u1 = DynamicVector::from(vec![Mod7::new(1), Mod7::new(0)]);
@@ -258,6 +259,7 @@ mod tests {
     assert!(quotient_basis.is_empty(), "Quotient basis should be empty if space_vectors is empty");
   }
 
+  #[allow(clippy::similar_names)]
   #[test]
   fn test_quotient_zero_dimensional_vectors() {
     let u1_zero_dim = DynamicVector::<Mod7>::new(vec![]);
@@ -282,6 +284,7 @@ mod tests {
     );
   }
 
+  #[allow(clippy::similar_names)]
   #[test]
   fn test_quotient_all_zero_vectors_of_some_dimension() {
     // V = span{[0,0], [0,0]}, U = span{[0,0]}

@@ -733,6 +733,7 @@ impl<T: ComplexElement> Complex<T> {
   /// assert_eq!(complex.elements_of_dimension(1).len(), 5); // 5 unique edges
   /// assert_eq!(complex.elements_of_dimension(0).len(), 4); // 4 vertices
   /// ```
+  #[allow(clippy::missing_panics_doc)]
   pub fn join_element(&mut self, element: T) -> T {
     // Check if we already have this element (by mathematical content)
     if let Some(existing) = self.find_equivalent_element(&element) {
@@ -1404,6 +1405,7 @@ impl<T: ComplexElement> Topology for Complex<T> {
       // Find the corresponding element in the complex that matches this face's content
       if let Some(complex_face) = self.find_equivalent_element(&face) {
         // Use the orientation coefficient from the element-specific boundary operator
+        #[allow(clippy::comparison_chain)]
         let coeff = if orientation > 0 {
           R::one()
         } else if orientation < 0 {

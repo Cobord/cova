@@ -224,14 +224,16 @@ where
         // Otherwise, take the maximum of term and result
         result = match (term, result) {
           (TropicalElement::Element(_), TropicalElement::NegInfinity) => term,
-          (TropicalElement::NegInfinity, TropicalElement::Element(_)) => result,
+          (
+            TropicalElement::NegInfinity,
+            TropicalElement::Element(_) | TropicalElement::NegInfinity,
+          ) => result,
           (TropicalElement::Element(t), TropicalElement::Element(r)) =>
             if t > r {
               term
             } else {
               result
             },
-          (TropicalElement::NegInfinity, TropicalElement::NegInfinity) => result,
         };
       }
     }
@@ -269,6 +271,7 @@ where
 
 #[cfg(test)]
 mod tests {
+  #![allow(clippy::many_single_char_names)]
   use super::*;
 
   #[test]

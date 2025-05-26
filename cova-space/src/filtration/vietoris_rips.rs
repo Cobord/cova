@@ -276,6 +276,7 @@ impl<const N: usize, R> ParallelFiltration for VietorisRips<N, Homology<R>> wher
 
 #[cfg(test)]
 mod tests {
+  #[allow(unused_imports)]
   // For homology coefficients
   use cova_algebra::{
     algebras::boolean::Boolean, modular, prime_field, tensors::fixed::FixedVector,

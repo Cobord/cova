@@ -320,6 +320,7 @@ where T: Hash + Eq + Clone + Debug
             self.restrictions.get(&(k_element.clone(), k_plus_1_element.clone()))
           {
             // Apply the orientation sign to the restriction matrix
+            #[allow(clippy::comparison_chain)]
             let signed_matrix = if *orientation_coeff > 0 {
               restriction_matrix.clone()
             } else if *orientation_coeff < 0 {
@@ -610,6 +611,7 @@ mod tests {
     assert_eq!(coboundary.block_structure(), (0, 0));
   }
 
+  #[allow(clippy::similar_names)]
   fn cubical_complex_2d(
   ) -> (CubicalComplex, HashMap<(Cube, Cube), DynamicDenseMatrix<f64, RowMajor>>) {
     let mut cc = CubicalComplex::new();

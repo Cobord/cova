@@ -153,6 +153,7 @@ impl<T: Hash + Eq + Clone> Lattice<T> {
   /// let mut lattice = Lattice::new();
   /// lattice.add_relation(1, 2); // 1 ≤ 2
   /// ```
+  #[allow(clippy::needless_pass_by_value)]
   pub fn add_relation(&mut self, a: T, b: T) {
     self.add_element(a.clone());
     self.add_element(b.clone());
@@ -551,6 +552,10 @@ impl<T: Hash + Eq + Clone + std::fmt::Display + Ord> Lattice<T> {
   /// An `IoResult<()>` which is `Ok(())` on successful write, or an `Err`
   /// containing an `std::io::Error` if any I/O error occurs (e.g., file
   /// creation fails).
+  ///
+  /// # Errors
+  ///
+  /// If any I/O error occurs (e.g., file creation fails).
   ///
   /// # Panics
   ///
